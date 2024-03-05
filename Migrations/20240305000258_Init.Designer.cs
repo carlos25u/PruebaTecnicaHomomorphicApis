@@ -11,8 +11,8 @@ using PruebaTecnicaHomomorphicApis.DAL;
 namespace PruebaTecnicaHomomorphicApis.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20231106201534_init")]
-    partial class init
+    [Migration("20240305000258_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,26 @@ namespace PruebaTecnicaHomomorphicApis.Migrations
                     b.HasKey("IdCliente");
 
                     b.ToTable("Clientes");
+                });
+
+            modelBuilder.Entity("PruebaTecnicaHomomorphicApis.modelos.Usuarios", b =>
+                {
+                    b.Property<string>("UsuarioId")
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Usuario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UsuarioId");
+
+                    b.ToTable("Usuarios");
                 });
 #pragma warning restore 612, 618
         }

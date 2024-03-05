@@ -1,7 +1,8 @@
 
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using PruebaTecnica_Cifrado_Homomorfico.Repository;
 using PruebaTecnicaHomomorphicApis.DAL;
+using PruebaTecnicaHomomorphicApis.Services;
 
 namespace PruebaTecnicaHomomorphicApis
 {
@@ -24,7 +25,15 @@ namespace PruebaTecnicaHomomorphicApis
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
 
-            builder.Services.AddScoped<ClientesRepository>();
+            builder.Services.AddScoped<ClientesServices>();
+            builder.Services.AddScoped<UsuariosServices>();
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(option =>
+            {
+                option.LoginPath = "/Usuarios/Login";
+                option.AccessDeniedPath = "/Usuarios/Login";
+            });
 
             builder.Services.AddSwaggerGen();
 

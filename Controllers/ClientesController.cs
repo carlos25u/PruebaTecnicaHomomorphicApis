@@ -1,16 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PruebaTecnica_Cifrado_Homomorfico.Repository;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PruebaTecnicaHomomorphicApis.DAL;
 using PruebaTecnicaHomomorphicApis.modelos;
+using PruebaTecnicaHomomorphicApis.Services;
 
 namespace PruebaTecnicaHomomorphicApis.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class ClientesController : ControllerBase
     {
-        private readonly ClientesRepository clientesRepository;
-        public ClientesController(ClientesRepository clientesRepository)
+        private readonly ClientesServices clientesRepository;
+        public ClientesController(ClientesServices clientesRepository)
         {
             this.clientesRepository = clientesRepository;
         }

@@ -7,5 +7,6 @@ namespace PruebaTecnicaHomomorphicApis.DAL
     {
         public Contexto(DbContextOptions<Contexto> options) : base(options) { }
         public DbSet<Clientes> Clientes { get; set; }
+        public DbSet<Usuarios> Usuarios { get; set; }
     }
 }

@@ -10,14 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace PruebaTecnica_Cifrado_Homomorfico.Repository
+namespace PruebaTecnicaHomomorphicApis.Services
 {
-    public class ClientesRepository
+    public class ClientesServices
     {
         private readonly EncriptadoService encriptar;
         private readonly Contexto contexto;
 
-        public ClientesRepository(Contexto contexto)
+        public ClientesServices(Contexto contexto)
         {
             encriptar = DependencyContainer.GetEncriptadoService();
             this.contexto = contexto;
@@ -62,7 +62,7 @@ namespace PruebaTecnica_Cifrado_Homomorfico.Repository
         }
 
         public List<Clientes> GetClientes()
-        { 
+        {
             try
             {
                 var listaOriginal = contexto.Clientes.ToList();
@@ -96,7 +96,7 @@ namespace PruebaTecnica_Cifrado_Homomorfico.Repository
             }
         }
 
-        public Clientes buscar(String id)
+        public Clientes buscar(string id)
         {
             var cliente = new Clientes();
             var clienteDecifrado = new Clientes();
@@ -129,7 +129,7 @@ namespace PruebaTecnica_Cifrado_Homomorfico.Repository
             return clienteDecifrado;
         }
 
-        public bool eliminar(String id)
+        public bool eliminar(string id)
         {
             bool paso = false;
             var cliente = new Clientes();

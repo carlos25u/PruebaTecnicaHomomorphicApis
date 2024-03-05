@@ -5,7 +5,7 @@
 namespace PruebaTecnicaHomomorphicApis.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,6 +25,20 @@ namespace PruebaTecnicaHomomorphicApis.Migrations
                 {
                     table.PrimaryKey("PK_Clientes", x => x.IdCliente);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    UsuarioId = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Usuario = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.UsuarioId);
+                });
         }
 
         /// <inheritdoc />
@@ -32,6 +46,9 @@ namespace PruebaTecnicaHomomorphicApis.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Clientes");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
         }
     }
 }
